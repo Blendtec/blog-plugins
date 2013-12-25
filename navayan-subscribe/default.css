@@ -1,0 +1,95 @@
+#nySubscribeTabs{
+    clear:both;
+    margin-right: 20px
+}
+#nySubscribeTabs a{
+    font-size:14px;
+    text-decoration:none;
+    display:inline-block;
+    border: 1px solid #ccc;
+    border-bottom:0;
+    padding: 6px 16px;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0
+}
+#nySubscribeTabs a.on{
+    font-weight:700;
+    color:#666;
+    background:#fff;
+    position:relative;
+    z-index:21;
+    border-bottom:0		
+}
+#nySubscribeTabs a.donatelink{
+    margin-left:14px;
+    background: #009e4a;
+    color: #fff;
+    border: 0;
+}
+#nySubscribeBlocks > div{
+    display:none;
+    border: 1px solid #ccc;
+    padding: 5px 16px;
+    margin-right: 20px;
+    position:relative;
+    z-index:20;
+    margin-top: -1px
+}
+#nySubscribeBlocks div:first-child label,
+#nySubscribeSpamBlockForm label{
+    display:inline-block;
+    width: 250px;
+    margin-right: 20px
+}
+#nySubscribeBlocks div input[type='text']{width:300px}
+#nySubscribeBlocks div textarea{width:300px}
+form#nyEmailTemplateForm{display:inline-block; margin-right: 20px}
+form#nyEmailTemplateForm label{display: block;font-weight: 700}
+form#nyEmailTemplateForm textarea{height: 160px}
+#nySubscribeSubstitutes{
+    display:inline-block;
+    vertical-align:top
+}
+#nySubscribeSubstitutes strong{display:inline-block; width: 160px}
+.nysMsg{display:none}
+.nysMsg,
+.nys-success,
+.nys-error,
+#nySubscribeBlocks h3{
+    clear:both;
+    font-weight: 400;
+    padding: 4px 10px;
+    margin-top: 30px;
+}
+#nySubscribeBlocks h3:first-child{
+    margin-top: 10px;
+}
+#nySubscribeBlocks h4{
+    clear:both;
+    font-weight: 700;
+    padding: 0;
+}
+.nysMsg, #nySubscribeBlocks h3{border: 1px solid #FFD4AA; background:#FEE7D0}
+#nySubscribeBlocks h4 label{padding: 4px 10px; background:#eee;}
+
+.nys-success{border: 1px solid #8CDF8B; background-color:#DFFFDF; color:#090}
+.nys-error{border: 1px solid #FF8F8F; background-color:#FFDFDF; color:#f00}
+.nysNote{font-weight: 400; padding:8px 14px; margin-right: 20px; background: #FFCFD1; border: 1px solid #FF3F47}
+
+#nySubscribeBlocks blockquote {
+	font: italic 400 18px/26px Georgia, "Bitstream Charter", serif;
+	margin: 1em 0;
+	border: 1px solid #ccc;
+	background:#f5f5f5;
+	color:#666;
+	padding: 10px 18px;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px
+}
+
+/*********** FRONT-END *************/
+#ny_subscribe_wrapper, #userloggedin{clear:both}
+#ny_subscribe_wrapper p{margin:0; padding:5px}
+#ny_subscribe_wrapper p#nySubscribeMsg{margin:0; padding:2px 8px}

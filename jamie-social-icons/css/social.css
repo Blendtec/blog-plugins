@@ -1,0 +1,76 @@
+/* CSS Document */
+.martiniboy_social_list {
+	clear: both;
+	display: block;
+}
+.martinisocial_text  {
+	float: left;
+	display: inline-block;
+	padding-right: 8px;
+}	
+ul.jamie_social {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	display: inline;
+	
+}
+ul.jamie_social.martinileft {
+	float: left;	
+}
+ul.jamie_social.martiniright {
+	float: right;	
+}
+ul.jamie_social.martinicenter {
+	float: none;
+	display: block;
+	margin: 0px auto;
+	text-align:center;	
+	height: 20px;
+}
+ul.jamie_social li {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	text-align:left;
+	float: left;
+	vertical-align:baseline;
+	overflow: visible;
+	line-height: 20px;
+	min-width:90px;
+}
+ul.jamie_social li.martinifb {
+	padding: 0px 8px 0px 0px;
+}	
+ul.jamie_social.martinicenter li {
+	float: none;
+	text-align:center;	
+	display: inline;
+}
+ul.jamie_social.martinicenter li.martinifb {
+	vertical-align: top;	
+}
+.jamie_clear {
+	clear: both;
+	height: 0px;
+}        
+li.pin {
+	position: relative;	
+}
+li.pin a.pinarea {
+	position:absolute;
+	width: 43px;
+	height: 20px;
+	left: 0px;
+	top: 0px;	
+}
+ul.jamie_social p {
+	margin: 0;
+	padding:0;
+	display: inline-block;	
+}
+ul.jamie_social li iframe {
+	    max-width: none!important;
+	margin: 0;
+padding:0;
+}
