@@ -58,13 +58,6 @@ h3, p {
 	border-bottom: 1px dashed #999;
 	display: inline;
 	}
-.wp-menu-image {
-	background-image:url('mf_logo_black_wp.png');
-	background-position:center; 
-}
-.wp-menu-image img {
-	display: none;
-}
 .code {
 	background-color: #C0D9D9;
 	border: 1px dashed #999;
