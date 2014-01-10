@@ -52,7 +52,7 @@ if ( ! defined( 'AIOSEOP_PLUGIN_DIRNAME' ) )
     define( 'AIOSEOP_PLUGIN_DIRNAME', dirname( AIOSEOP_PLUGIN_BASENAME ) );
 
 if ( ! defined( 'AIOSEOP_PLUGIN_URL' ) )
-    define( 'AIOSEOP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+    define( 'AIOSEOP_PLUGIN_URL', WP_CONTENT_URL. '/plugins/all-in-one-seo-pack/' );
 
 if ( ! defined( 'AIOSEOP_PLUGIN_IMAGES_URL' ) )
     define( 'AIOSEOP_PLUGIN_IMAGES_URL', AIOSEOP_PLUGIN_URL . 'images/' );
