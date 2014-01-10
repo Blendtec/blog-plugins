@@ -5,7 +5,7 @@
 **/
 add_action('admin_head', 'wp_rp_admin_head');
 function wp_rp_admin_head() {
-	$menu_icon = plugins_url('static/img/menu_icon.png', __FILE__);
+	$menu_icon = plugins_url('/related-posts/static/img/menu_icon.png');
 	$menu_icon_retina = plugins_url('static/img/menu_icon_2x.png', __FILE__);
 ?>
 <style type="text/css">
