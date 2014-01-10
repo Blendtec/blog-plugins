@@ -170,7 +170,7 @@ function really_simple_share_init ($force=false) {
 
 
 function really_simple_share_style () {
-	$myStyleUrl  = plugin_dir_url (__FILE__).'style.css';
+	$myStyleUrl  = plugins_url ('/really-simple-facebook-twitter-share-buttons/style.css');
 	$myStyleFile = plugin_dir_path(__FILE__).'style.css';
 	if ( file_exists($myStyleFile) ) {
 	    wp_register_style('really_simple_share_style', $myStyleUrl);
