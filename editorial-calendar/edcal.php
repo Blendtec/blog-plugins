@@ -526,14 +526,14 @@ class EdCal {
         wp_enqueue_script('jquery-ui-draggable');
         wp_enqueue_script('jquery-ui-droppable');
     
-        //wp_enqueue_script("date-extras", plugins_url("lib/date.extras.js", __FILE__ ), array( 'jquery' ));
+        //wp_enqueue_script("date-extras", plugins_url("/editorial-calendar/lib/date.extras.js"), array( 'jquery' ));
     
-        wp_enqueue_script("edcal-date", plugins_url("lib/languages/date-".__('en-US', 'editorial-calendar').".js", __FILE__ ));
-        wp_enqueue_script("edcal-lib", plugins_url("lib/edcallib.min.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("edcal-date", plugins_url("/editorial-calendar/lib/languages/date-".__('en-US', 'editorial-calendar').".js"));
+        wp_enqueue_script("edcal-lib", plugins_url("/editorial-calendar/lib/edcallib.min.js"), array( 'jquery' ));
     
         if (isset($_GET['qunit'])) {
-            wp_enqueue_script("qunit", plugins_url("lib/qunit.js", __FILE__ ), array( 'jquery' ));
-            wp_enqueue_script("edcal-test", plugins_url("edcal_test.js", __FILE__ ), array( 'jquery' ));
+            wp_enqueue_script("qunit", plugins_url("/editorial-calendar/lib/qunit.js"), array( 'jquery' ));
+            wp_enqueue_script("edcal-test", plugins_url("/editorial-calendar/edcal_test.js"), array( 'jquery' ));
         }
         
         return;
@@ -542,14 +542,14 @@ class EdCal {
          * If you're using one of the specific libraries you should comment out the two lines
          * above this comment.
          */
-        wp_enqueue_script("bgiframe", plugins_url("lib/jquery.bgiframe.js", __FILE__ ), array( 'jquery' ));
-        wp_enqueue_script("humanMsg", plugins_url("lib/humanmsg.js", __FILE__ ), array( 'jquery' ));
-        wp_enqueue_script("jquery-timepicker", plugins_url("lib/jquery.timepicker.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("bgiframe", plugins_url("/editorial-calendar/lib/jquery.bgiframe.js"), array( 'jquery' ));
+        wp_enqueue_script("humanMsg", plugins_url("/editorial-calendar/lib/humanmsg.js"), array( 'jquery' ));
+        wp_enqueue_script("jquery-timepicker", plugins_url("/editorial-calendar/lib/jquery.timepicker.js"), array( 'jquery' ));
         
-        wp_enqueue_script("scrollable", plugins_url("lib/tools.scrollable-1.1.2.js", __FILE__ ), array( 'jquery' ));
-        wp_enqueue_script("mouse-wheel", plugins_url("lib/lib/tools.scrollable.mousewheel-1.0.1.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("scrollable", plugins_url("/editorial-calendar/lib/tools.scrollable-1.1.2.js"), array( 'jquery' ));
+        wp_enqueue_script("mouse-wheel", plugins_url("/editorial-calendar/lib/tools.scrollable.mousewheel-1.0.1.js"), array( 'jquery' ));
     
-        wp_enqueue_script("json-parse2", plugins_url("lib/json2.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("json-parse2", plugins_url("/editorial-calendar/lib/json2.js"), array( 'jquery' ));
     }
     
     /*
