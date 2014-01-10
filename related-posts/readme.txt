@@ -4,7 +4,7 @@ Tags: link, links, navigation, plugin, related, Post, posts, widget, widgets
 License: GPLv2
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 3.3
+Stable tag: 3.4
 
 Link to related content to help your readers. Get attention from other authors. Make great outbound links for SEO. With just a few clicks.
 
@@ -16,6 +16,8 @@ Link to related content to help your readers. Get attention from other authors. 
 * Related posts help your readers discover your own related content by automatically linking to it at the bottom of each post.
 * Related articles help your readers find other related content from bloggers just like you. You can get the attention from the authors you’ve linked to.
 * In-text links are similar to related articles, but they also include links to Wikipedia, Google Maps, IMDb and others.
+
+This is basically a testbed for features. When features get stable they get into the main plug-in which is [WordPress Related Posts](http://wordpress.org/plugins/wordpress-23-related-posts-plugin/).
 
 == Frequently Asked Questions ==
 
@@ -60,6 +62,9 @@ That is how we keep this plugin free. Publishers pay us to show you related cont
 Fix for security vulnerability. Upgrade immediately.
 
 == Changelog ==
+
+= 3.4 =
+* Setting that allows only admins to edit related posts, after they are published
 
 = 3.3 =
 * Solved compatibility issues with Zemanta Editorial Assistant

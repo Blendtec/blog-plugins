@@ -84,9 +84,9 @@ function jpibfi_add_plugin_scripts() {
 	if ( ! ( jpibfi_add_plugin() ) )
 		return;
 
-	wp_register_style( 'jquery-pin-it-button-style', plugins_url( '/css/style.css', __FILE__ ), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, 'all' );
+	wp_register_style( 'jquery-pin-it-button-style', plugins_url( '/jquery-pin-it-button-for-images/css/style.css'), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, 'all' );
 	wp_enqueue_style( 'jquery-pin-it-button-style' );
-	wp_enqueue_script( 'jquery-pin-it-button-script', plugins_url( '/js/script.min.js', __FILE__ ), array( 'jquery' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
+	wp_enqueue_script( 'jquery-pin-it-button-script', plugins_url( '/jquery-pin-it-button-for-images/js/script.min.js'), array( 'jquery' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
 
 	$visual_options = get_option( JPIBFI_VISUAL_OPTIONS );
 	$selection_options = get_option( JPIBFI_SELECTION_OPTIONS );

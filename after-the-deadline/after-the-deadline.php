@@ -280,7 +280,7 @@ function AtD_link_plugin_meta( $links, $file ) {
 }
 
 function AtD_admin_styles() {
-	wp_enqueue_style( 'jetpack-upgrade', plugins_url( '_inc/jetpack-upgrade.css', __FILE__ ), false, '20120601' );
+	wp_enqueue_style( 'jetpack-upgrade', plugins_url( '/after-the-deadline/_inc/jetpack-upgrade.css'), false, '20120601' );
 	wp_enqueue_script( 'thickbox' );
 	wp_enqueue_style( 'thickbox' );
 }

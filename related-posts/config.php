@@ -210,6 +210,7 @@ function wp_rp_install() {
 		'thumbnail_use_custom'			=> false,
 		'thumbnail_custom_field'		=> false,
 		'display_zemanta_linky'			=> false,
+        'only_admins_can_edit_related_posts' => false,
 
 		'mobile' => array(
 			'display_comment_count'			=> false,
@@ -246,9 +247,19 @@ function wp_rp_is_classic() {
 	return false;
 }
 
-function wp_rp_migrate_3_2() {
-	global $wpdb;
+function wp_rp_migrate_3_3() {
+    $wp_rp_meta = get_option('wp_rp_meta');
+	$wp_rp_meta['version'] = '3.4';
+	$wp_rp_meta['new_user'] = false;
+	$wp_rp_meta['classic_user'] = true;
+	update_option('wp_rp_meta', $wp_rp_meta);
+    
+    $wp_rp_options = get_option('wp_rp_options');
+    $wp_rp_options['only_admins_can_edit_related_posts'] = false;
+    update_option('wp_rp_options', $wp_rp_options);
+}
 
+function wp_rp_migrate_3_2() {
 	$wp_rp_meta = get_option('wp_rp_meta');
 	$wp_rp_meta['version'] = '3.3';
 	$wp_rp_meta['new_user'] = false;

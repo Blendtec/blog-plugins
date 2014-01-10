@@ -8,7 +8,6 @@ Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv3 or later
 */
-
 $antispam_send_spam_comment_to_admin = false; // if true, than rejected spam comments will be sent to admin email
 
 $antispam_allow_trackbacks = false; // if true, than trackbacks will be allowed
@@ -23,7 +22,7 @@ if ( ! function_exists( 'antispam_scripts_styles_init' ) ) :
 		global $antispam_version;
 		if ( !is_admin() ) { // && is_singular() && comments_open() && get_option( 'thread_comments' )
 			//wp_enqueue_script('jquery');
-			wp_enqueue_script( 'anti-spam-script', plugins_url( '/js/anti-spam.js', __FILE__ ), array( 'jquery' ), $antispam_version );
+			wp_enqueue_script( 'anti-spam-script', plugins_url( '/anti-spam/js/anti-spam.js'), array( 'jquery' ), $antispam_version );
 		}
 	}
 	add_action('init', 'antispam_scripts_styles_init');
