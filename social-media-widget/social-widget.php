@@ -22,7 +22,7 @@ if ( !defined('WP_CONTENT_URL') ) {
 
 function Social_Widget_Scripts(){
 	// Respects SSL, css is relative to the current file
-	wp_register_style( 'social-widget', plugins_url('social_widget.css', __FILE__) );
+	wp_register_style( 'social-widget', plugins_url('/social-media-widget/social_widget.css') );
 	wp_enqueue_style( 'social-widget' );
 }
 /* Add scripts to header */
