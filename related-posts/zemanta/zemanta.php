@@ -125,7 +125,7 @@ class WPRPZemanta {
 			__('Zemanta', 'zemanta'), 
 			'manage_options', 'zemanta', 
 			array($this, 'options'), 
-			plugins_url('/img/menu_icon.png', __FILE__)
+			plugins_url('/related-posts/img/menu_icon.png')
 		);
 	}
 

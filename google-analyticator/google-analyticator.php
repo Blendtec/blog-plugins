@@ -468,7 +468,7 @@ function ga_options_page() {
     <?php
 $addons = get_option("gapro_addons");
 if(!$addons){?>
-    <div id="vumga-sidebar" style="position: absolute; top: 0; right: 0; width: 250px; border: 1px solid #ccc; padding: 20px; background:#FFFFFF"> <a href="http://get.videousermanuals.com/ga-pro/?utm_campaign=analyticatorpro&utm_medium=plugin&utm_source=settings" target="_blank"><img src="<?php echo plugins_url('gapro-plugin-advert-sidebar.png', __FILE__ ); ?>" alt="Learn More" title="Learn More" /></a> </div>
+    <div id="vumga-sidebar" style="position: absolute; top: 0; right: 0; width: 250px; border: 1px solid #ccc; padding: 20px; background:#FFFFFF"> <a href="http://get.videousermanuals.com/ga-pro/?utm_campaign=analyticatorpro&utm_medium=plugin&utm_source=settings" target="_blank"><img src="<?php echo plugins_url('/google-analyticator/gapro-plugin-advert-sidebar.png'); ?>" alt="Learn More" title="Learn More" /></a> </div>
     <?php }?>
     <div style="margin-right: 320px;">
     <table class="form-table" cellspacing="2" cellpadding="5" width="100%">

@@ -3,7 +3,7 @@
 
 <div class="wrap" id="wp-zemanta">
 
-    <div class="logo"><img src="<?php echo plugins_url('/img/logo.png', dirname(__FILE__)); ?>" alt="Zemanta | social blogging" /></div>
+    <div class="logo"><img src="<?php echo plugins_url('/related-posts/img/logo.png'); ?>" alt="Zemanta | social blogging" /></div>
 
     <div class="cols clearfix">
       <div class="col-left">

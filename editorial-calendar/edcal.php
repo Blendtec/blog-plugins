@@ -200,7 +200,7 @@ class EdCal {
         <!-- This is just a little script so we can pass the AJAX URL and some localized strings -->
         <script type="text/javascript">
             jQuery(document).ready(function(){
-                edcal.plugin_url = '<?php echo(plugins_url("/", __FILE__ )); ?>';
+                edcal.plugin_url = '<?php echo(plugins_url("/editorial-calendar/")); ?>';
                 edcal.wp_nonce = '<?php echo wp_create_nonce("edit-calendar"); ?>';
                 <?php 
                     if (get_option("edcal_weeks_pref") != "") {
@@ -352,7 +352,7 @@ class EdCal {
             }
     
             #tipclose {
-                background-image: url('<?php echo(plugins_url("images/tip_close.png", __FILE__ )); ?>');
+                background-image: url('<?php echo(plugins_url("editorial-calendar/images/tip_close.png")); ?>');
             }
     
         </style>

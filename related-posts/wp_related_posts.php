@@ -424,7 +424,7 @@ function wp_rp_head_resources() {
 			"\twindow._wp_rp_traffic_exchange = " . ($options['traffic_exchange_enabled'] ? 'true' : 'false') . ";\n" .
 			(current_user_can('edit_posts') ?
 				"\twindow._wp_rp_admin_ajax_url = '" . admin_url('admin-ajax.php') . "';\n" .
-				"\twindow._wp_rp_plugin_static_base_url = '" . esc_js(plugins_url('static/' , __FILE__)) . "';\n" .
+				"\twindow._wp_rp_plugin_static_base_url = '" . esc_js(plugins_url('related-posts/static/')) . "';\n" .
 				"\twindow._wp_rp_ajax_nonce = '" . wp_create_nonce("wp_rp_ajax_nonce") . "';\n" .
 				"\twindow._wp_rp_erp_search = true;\n"
 			: '');

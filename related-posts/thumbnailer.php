@@ -232,7 +232,7 @@ function wp_rp_get_default_thumbnail_url($seed = false, $size = 'thumbnail') {
 		if ($seed) {
 			srand($next_seed);
 		}
-		return plugins_url('/static/thumbs/' . $file, __FILE__);
+		return plugins_url('/related-posts/static/thumbs/' . $file);
 	}
 }
 

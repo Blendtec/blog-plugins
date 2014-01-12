@@ -511,23 +511,23 @@ if ( !class_exists( "RavenSchema" ) ) :
 		public function admin_scripts( $hook ) {
 			// for post editor
 			if ( $hook == 'post-new.php' || $hook == 'post.php' ) :
-				wp_enqueue_style( 'schema-admin', plugins_url('/lib/css/schema-admin.css', __FILE__), array(), SC_VER, 'all' );
+				wp_enqueue_style( 'schema-admin', plugins_url('/schema-creator/lib/css/schema-admin.css'), array(), SC_VER, 'all' );
 
 				wp_enqueue_script( 'jquery-ui-core');
 				wp_enqueue_script( 'jquery-ui-datepicker');
 				wp_enqueue_script( 'jquery-ui-slider');
-				wp_enqueue_script( 'jquery-timepicker', plugins_url('/lib/js/jquery.timepicker.js', __FILE__) , array('jquery'), SC_VER, true );
-				wp_enqueue_script( 'format-currency', plugins_url('/lib/js/jquery.currency.min.js', __FILE__) , array('jquery'), SC_VER, true );
-				wp_enqueue_script( 'schema-form', plugins_url('/lib/js/schema.form.init.js', __FILE__) , array('jquery'), SC_VER, true );
+				wp_enqueue_script( 'jquery-timepicker', plugins_url('/schema-creator/lib/js/jquery.timepicker.js') , array('jquery'), SC_VER, true );
+				wp_enqueue_script( 'format-currency', plugins_url('/schema-creator/lib/js/jquery.currency.min.js') , array('jquery'), SC_VER, true );
+				wp_enqueue_script( 'schema-form', plugins_url('/schema-creator/lib/js/schema.form.init.js') , array('jquery'), SC_VER, true );
 			endif;
 
 			// for admin settings screen
 			$current_screen = get_current_screen();
 			if ( 'settings_page_schema-creator' == $current_screen->base ) :
-				wp_enqueue_style( 'schema-admin', plugins_url('/lib/css/schema-admin.css', __FILE__), array(), SC_VER, 'all' );
+				wp_enqueue_style( 'schema-admin', plugins_url('/schema-creator/lib/css/schema-admin.css'), array(), SC_VER, 'all' );
 
-				wp_enqueue_script( 'jquery-qtip', plugins_url('/lib/js/jquery.qtip.min.js', __FILE__) , array('jquery'), SC_VER, true );
-				wp_enqueue_script( 'schema-admin', plugins_url('/lib/js/schema.admin.init.js', __FILE__) , array('jquery'), SC_VER, true );
+				wp_enqueue_script( 'jquery-qtip', plugins_url('/schema-creator/lib/js/jquery.qtip.min.js') , array('jquery'), SC_VER, true );
+				wp_enqueue_script( 'schema-admin', plugins_url('/schema-creator/lib/js/schema.admin.init.js') , array('jquery'), SC_VER, true );
 			endif;
 		}
 
@@ -631,7 +631,7 @@ if ( !class_exists( "RavenSchema" ) ) :
 			}
 
 			if ($found == true )
-				wp_enqueue_style( 'schema-style', plugins_url('/lib/css/schema-style.css', __FILE__), array(), SC_VER, 'all' );
+				wp_enqueue_style( 'schema-style', plugins_url('/schema-creator/lib/css/schema-style.css'), array(), SC_VER, 'all' );
 
 			if ( empty($meta_check) && $found == true )
 				update_post_meta($post->ID, '_raven_schema_load', true);

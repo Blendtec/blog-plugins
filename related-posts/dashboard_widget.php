@@ -40,7 +40,7 @@ function wp_rp_display_dashboard_widget() {
 
 function wp_rp_dashboard_scripts($hook) {
 	if($hook === 'index.php') {
-		wp_enqueue_script('wp_rp_dashboard_script', plugins_url('static/js/dashboard.js', __FILE__), array('jquery'));
-		wp_enqueue_style('wp_rp_dashaboard_style', plugins_url('static/css/dashboard.css', __FILE__));
+		wp_enqueue_script('wp_rp_dashboard_script', plugins_url('related-posts/static/js/dashboard.js'), array('jquery'));
+		wp_enqueue_style('wp_rp_dashaboard_style', plugins_url('related-posts/static/css/dashboard.css'));
 	}
 }

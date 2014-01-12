@@ -15,7 +15,8 @@
 //---------------------------------------------------------------------------
 // Globals
 global $g_JAY__plugin_directory_url;   // Non-trail-slashed WEB URL of plugin directory.
-$g_JAY__plugin_directory_url = rtrim (WP_PLUGIN_URL . '/j-shortcodes/');
+//$g_JAY__plugin_directory_url = rtrim (WP_PLUGIN_URL . '/' . str_replace (basename(__FILE__), "", //plugin_basename(__FILE__)), '/');
+$g_JAY__plugin_directory_url = WP_PLUGIN_URL . '/j-shortcodes/';
 //---------------------------------------------------------------------------
 
 global $g_JAY__config_defaults;

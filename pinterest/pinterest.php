@@ -59,7 +59,7 @@ add_action('wp_footer', 'pinterestJS', 100);
 
 
 function pinterestCSS(){
-echo "<link rel=\"stylesheet\" href=\"".plugins_url( 'pinterest/pin-it.css' )."\" type=\"text/css\" />";
+echo "<link rel=\"stylesheet\" href=\"".plugins_url( '/pinterest/pin-it.css' )."\" type=\"text/css\" />";
 }
 add_action('wp_head', 'pinterestCSS', 1);
 

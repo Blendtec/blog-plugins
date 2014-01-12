@@ -27,7 +27,7 @@ define( "JPIBFI_ADVANCED_OPTIONS", "jpibfi_advanced_options" );
 define( "JPIBFI_VERSION_OPTION", "jpibfi_version");
 
 //DEFAULT PIN BUTTON IMAGE
-define( "JPIBFI_IMAGE_URL", plugins_url( '/images/pinit-button.png', __FILE__ ) );
+define( "JPIBFI_IMAGE_URL", plugins_url( 'jquery-pin-it-button-for-images/images/pinit-button.png') );
 define( "JPIBFI_IMAGE_WIDTH", 65 );
 define( "JPIBFI_IMAGE_HEIGHT", 41 );
 
@@ -140,7 +140,7 @@ function jpibfi_print_header_style_action() {
 	<!--[if lt IE 9]>
 		<style type="text/css">
 			.pinit-overlay {
-				background-image: url( '<?php echo plugins_url( '/images/transparency_0.png', __FILE__ ); ?>' ) !important;
+				background-image: url( '<?php echo plugins_url( 'jquery-pin-it-button-for-images/images/transparency_0.png'); ?>' ) !important;
 			}
 		</style>
 	<![endif]-->
@@ -480,19 +480,19 @@ add_action( 'admin_menu', 'jpibfi_print_admin_page_action' );
  */
 function jpibfi_add_admin_site_scripts() {
 
-	wp_register_style( 'jquery-pin-it-button-admin-style', plugins_url( '/css/admin.css', __FILE__ ), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, 'all' );
+	wp_register_style( 'jquery-pin-it-button-admin-style', plugins_url( 'jquery-pin-it-button-for-images/css/admin.css'), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, 'all' );
 	wp_enqueue_style( 'jquery-pin-it-button-admin-style' );
 
-	wp_enqueue_script( 'jquery-pin-it-button-admin-script', plugins_url( '/js/admin.js', __FILE__ ), array( 'jquery' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
+	wp_enqueue_script( 'jquery-pin-it-button-admin-script', plugins_url( 'jquery-pin-it-button-for-images/js/admin.js'), array( 'jquery' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
 
-	wp_register_script( 'angular', plugins_url( '/js/angular.min.js', __FILE__ ) , '', '1.0.7', false );
-	wp_enqueue_script( 'jquery-pin-it-button-admin-angular-script', plugins_url( '/js/admin-angular.js', __FILE__ ), array( 'angular' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
+	wp_register_script( 'angular', plugins_url( 'jquery-pin-it-button-for-images/js/angular.min.js') , '', '1.0.7', false );
+	wp_enqueue_script( 'jquery-pin-it-button-admin-angular-script', plugins_url( 'jquery-pin-it-button-for-images/js/admin-angular.js'), array( 'angular' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
 
 	if ( function_exists( "wp_enqueue_media") ) {
 		wp_enqueue_media();
-		wp_enqueue_script( 'jpibfi-upload-new', plugins_url( '/js/upload-button-new.js', __FILE__ ), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
+		wp_enqueue_script( 'jpibfi-upload-new', plugins_url( 'jquery-pin-it-button-for-images/js/upload-button-new.js'), array(), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
 	} 	else {
-		wp_enqueue_script( 'jpibfi-upload-old', plugins_url( '/js/upload-button-old.js', __FILE__ ), array('thickbox', 'media-upload' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
+		wp_enqueue_script( 'jpibfi-upload-old', plugins_url( 'jquery-pin-it-button-for-images/js/upload-button-old.js'), array('thickbox', 'media-upload' ), JPIBFI_VERSION . JPIBFI_VERSION_MINOR, false );
 	}
 }
 

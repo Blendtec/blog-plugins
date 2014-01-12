@@ -376,10 +376,10 @@ function really_simple_share ($content, $filter, $link='', $title='', $author=''
 		}	
 		else if ($name == 'email') {
 			$subject = ($option['email_subject']!='') ? $option['email_subject'] : $title;
-			$out .= '<a href="mailto:?subject='.rawurlencode($subject).'&amp;body='.rawurlencode($subject.' - '.$link).'"><img src="'.plugins_url('images/email.png',__FILE__).'" alt="'.__('Email', 'really-simple-share').'" title="'.__('Email', 'really-simple-share').'" /> '.stripslashes($option['email_label']).'</a>';
+			$out .= '<a href="mailto:?subject='.rawurlencode($subject).'&amp;body='.rawurlencode($subject.' - '.$link).'"><img src="'.plugins_url('really-simple-facebook-twitter-share-buttons/images/email.png').'" alt="'.__('Email', 'really-simple-share').'" title="'.__('Email', 'really-simple-share').'" /> '.stripslashes($option['email_label']).'</a>';
 		}
 		else if ($name == 'print') {
-			$out .= '<a href="javascript:window.print();void(0);"><img src="'.plugins_url('images/print.png',__FILE__).'" alt="'.__('Print', 'really-simple-share').'" title="'.__('Print', 'really-simple-share').'" /> '.stripslashes($option['print_label']).'</a>';
+			$out .= '<a href="javascript:window.print();void(0);"><img src="'.plugins_url('really-simple-facebook-twitter-share-buttons/images/print.png').'" alt="'.__('Print', 'really-simple-share').'" title="'.__('Print', 'really-simple-share').'" /> '.stripslashes($option['print_label']).'</a>';
 		}
 		else if ($name == 'google1') {
 			$option_layout = ($option['layout']=='button') ? 'data-size="medium"' : 'data-size="tall"';
@@ -489,7 +489,7 @@ function really_simple_share ($content, $filter, $link='', $title='', $author=''
 		}
 		else if ($name == 'rss') {
 			$the_post_id = get_the_ID();
-			$out .= '<a href="'.get_post_comments_feed_link($the_post_id, 'rss2').'" title="'.$option['rss_text'].'"><img src="'.plugins_url('images/rss.png',__FILE__).'" alt="'.stripslashes($option['rss_text']).'" title="'.stripslashes($option['rss_text']).'" /> '.stripslashes($option['rss_text']).'</a>';
+			$out .= '<a href="'.get_post_comments_feed_link($the_post_id, 'rss2').'" title="'.$option['rss_text'].'"><img src="'.plugins_url('really-simple-facebook-twitter-share-buttons/images/rss.png').'" alt="'.stripslashes($option['rss_text']).'" title="'.stripslashes($option['rss_text']).'" /> '.stripslashes($option['rss_text']).'</a>';
 		}
 		else if ($name == 'twitter') {
 			$option_layout = ($option['layout']=='box') ? 'vertical' : 'horizontal';

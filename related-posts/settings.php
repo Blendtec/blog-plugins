@@ -5,8 +5,8 @@
 **/
 add_action('admin_head', 'wp_rp_admin_head');
 function wp_rp_admin_head() {
-	$menu_icon = plugins_url('/related-posts/static/img/menu_icon.png');
-	$menu_icon_retina = plugins_url('static/img/menu_icon_2x.png', __FILE__);
+	$menu_icon = plugins_url('related-posts/static/img/menu_icon.png');
+	$menu_icon_retina = plugins_url('related-posts/static/img/menu_icon_2x.png');
 ?>
 <style type="text/css">
 #toplevel_page_wordpress-related-posts .wp-menu-image {
@@ -58,12 +58,12 @@ function wp_rp_settings_admin_menu() {
 }
 
 function wp_rp_settings_scripts() {
-	wp_enqueue_script('wp_rp_themes_script', plugins_url('static/js/themes.js', __FILE__), array('jquery'), WP_RP_VERSION);
-	wp_enqueue_script("wp_rp_dashboard_script", plugins_url('static/js/dashboard.js', __FILE__), array('jquery'), WP_RP_VERSION);
-	wp_enqueue_script("wp_rp_extras_script", plugins_url('static/js/extras.js', __FILE__), array('jquery'), WP_RP_VERSION);
+	wp_enqueue_script('wp_rp_themes_script', plugins_url('related-posts/static/js/themes.js'), array('jquery'), WP_RP_VERSION);
+	wp_enqueue_script("wp_rp_dashboard_script", plugins_url('related-posts/static/js/dashboard.js'), array('jquery'), WP_RP_VERSION);
+	wp_enqueue_script("wp_rp_extras_script", plugins_url('related-posts/static/js/extras.js'), array('jquery'), WP_RP_VERSION);
 }
 function wp_rp_settings_styles() {
-	wp_enqueue_style("wp_rp_dashboard_style", plugins_url("static/css/dashboard.css", __FILE__), array(), WP_RP_VERSION);
+	wp_enqueue_style("wp_rp_dashboard_style", plugins_url("related-posts/static/css/dashboard.css"), array(), WP_RP_VERSION);
 }
 
 function wp_rp_register_blog($button_type='other') {
@@ -321,7 +321,7 @@ function wp_rp_settings_page() {
 				<p>By turning on Related Posts you agree to <a href="http://www.zemanta.com/rp-tos" target="_blank">terms of service.</a></p>
 				<p>You'll get Advanced Settings, Themes, Thumbnails and Analytics Dashboard. These features are provided by <a target="_blank" href="http://www.zemanta.com">Zemanta</a> as a service.</p>
 			</div>
-			<img class="screendesc" src="<?php echo plugins_url("static/img/turnonscreen.jpg", __FILE__); ?>" />
+			<img class="screendesc" src="<?php echo plugins_url("related-posts/static/img/turnonscreen.jpg"); ?>" />
 		</div>
 		<?php endif; ?>
 
