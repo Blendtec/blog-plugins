@@ -24,7 +24,7 @@ ul.jpibfi-classes-list {
 
 ul.jpibfi-classes-list li {
 	float: left;
-	margin-right: 0px;
+	margin-right: 0;
 	padding: 0 20px 0 0;
 }
 
@@ -34,14 +34,14 @@ ul.jpibfi-classes-list a {
 	background-color: #ffffff;
 	background-image: url('../images/delete.png');
 	background-repeat: no-repeat;
-	background-position: 0px 0px;
+	background-position: 0 0;
 	width: 16px;
 	height: 16px;
 	cursor: pointer;
 }
 
 ul.jpibfi-classes-list a:hover {
-	background-position: -16px 0px;
+	background-position: -16px 0;
 }
 
 ul.jpibfi-classes-list span {
