@@ -3,8 +3,8 @@ Contributors: powerblogservice, diywebmastery
 Donate link: http://www.authorsure.com/donate/
 Tags: authorship markup, google authorship, author rank, rel=author, rel=me, rel=publisher, googleplus, google+, rich snippets
 Requires at least: 3.0
-Tested up to: 3.7.1
-Stable tag: 1.9.1
+Tested up to: 3.8.1
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ Show your face and build your brand in Google search results. Or in SEO-speak, m
 * Creates a link from your home page to your Google Plus Page for your product, brand or organization
 * Allows you to control whether your rich snippets show the original post publication date or the last time the post was updated.
 * Allows you to control whether external links in the author bios are rel=nofollow
+* Ability to control whether or not you have Google Authorship for custom post types
 * http://www.authorsure.com/category/themes has set-up instructions for most popular WordPress themes
 
 == Installation ==
@@ -46,23 +47,22 @@ See http://www.authorsure.com/category/faq/ for the full list of questions and a
 
 == Changelog ==
 
-= 1.9.1 - Fix major bug in 1.9 - bio is not added to author page
+= 2.1.1 = Fix bug in custom sorting
+= 2.1 = Add orderby parameter to authorsure_authors short code to allow custom sorting
+= 2.0.2 = Bug fix - fix to loading of plugin on AJAX calls such as inserting a gallery using NEXTGEN.
+= 2.0.1 = Bug fix - added missing declaration of authorsure::$intro.
+= 2.0 = Ability to set defaults for custom post types, improved integration with Genesis themes
+= 1.9.1 = Fix major bug in 1.9 - bio is not added to author page
 = 1.9 = Change Twitter URL to Twitter Name to avoid conflict with WordPress SEO Twitter Cards, fix last updated date on archive pages and add home page rel=author link 
 = 1.8.1 = Fix Avatar display bug (sorry!) 
 = 1.8 = Set minimum user role at which Google Authorship applies  (e.g Administrator, Editor, Author or Contributor) and add facility to strip links from author bios. This is useful if your contributors are filling their profiles with affiliate links.
-= 1.7 = Fix issue with Author Box (or author footnote) not appearing when the content of the post was read more than once on the page (for example it was pre-fetched to derive a twitter description which was to be stored in meta values) 
-= 1.6 = Add option to suppress author information on custom post type pages such as landing pages 
-= 1.5 = Add option to show Author Avatar photo on the author page, also include authorsure.css on pages using an authorsure shortcode
-= 1.4 = Added Pinterest social profile and allowed option to control whether link on author bios are rel=nofollow
-= 1.3 = Do not insert author bio on author page if the page is being accessed as a feed
-= 1.2 = Moved queueing of stylesheet earlier and removed extra space in Author Box
 
 For full change history see http://www.authorsure.com/changelog/
 
 == Upgrade Notice ==
 
-= 1.9.1 = 
-* Mandatory - Fix bug in 1.9 - 1.9 does not work apologies 
+= 2.1.1 = 
+* Optional - fix bug in custom sort order for author list
 
 == Links ==
 
