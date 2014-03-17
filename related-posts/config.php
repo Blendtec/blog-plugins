@@ -1,7 +1,7 @@
 <?php
 
 define('WP_RP_STATIC_BASE_URL', 'http://rp.zemanta.com/static/');
-define('WP_RP_STATIC_THEMES_PATH', 'wp-rp-css/');
+define('WP_RP_STATIC_THEMES_PATH', 'themes/');
 define('WP_RP_STATIC_JSON_PATH', 'json/');
 
 define("WP_RP_DEFAULT_CUSTOM_CSS",
@@ -56,13 +56,14 @@ function wp_rp_get_options() {
 		return $wp_rp_options;
 	}
 
-	$wp_rp_options = get_option('wp_rp_options', false);
-	$wp_rp_meta = get_option('wp_rp_meta', false);
+	$wp_rp_options = get_option('gp_options', false);
+	$wp_rp_meta = get_option('gp_meta', false);
 
 	if(!$wp_rp_meta || !$wp_rp_options || $wp_rp_meta['version'] !== WP_RP_VERSION) {
 		wp_rp_upgrade();
-		$wp_rp_meta = get_option('wp_rp_meta');
-		$wp_rp_options = get_option('wp_rp_options');
+		$wp_rp_meta = get_option('gp_meta');
+		$wp_rp_options = get_option('gp_options');
+		
 	}
 
 	$wp_rp_meta = new ArrayObject($wp_rp_meta);
@@ -86,7 +87,7 @@ function wp_rp_update_meta($new_meta) {
 
 	$new_meta = (array) $new_meta;
 
-	$r = update_option('wp_rp_meta', $new_meta);
+	$r = update_option('gp_meta', $new_meta);
 
 	if($r && $wp_rp_meta !== false) {
 		$wp_rp_meta->exchangeArray($new_meta);
@@ -99,7 +100,7 @@ function wp_rp_update_options($new_options) {
 	global $wp_rp_options;
 
 	$new_options = (array) $new_options;
-	$r = update_option('wp_rp_options', $new_options);
+	$r = update_option('gp_options', $new_options);
 	if($r && $wp_rp_options !== false) {
 		$wp_rp_options->exchangeArray($new_options);
 	}
@@ -117,22 +118,34 @@ function wp_rp_deactivate_hook() {
 }
 
 function wp_rp_upgrade() {
-	$wp_rp_meta = get_option('wp_rp_meta', false);
+	$wp_rp_meta = get_option('gp_meta', false);
 	$version = false;
 
 	if($wp_rp_meta) {
 		$version = $wp_rp_meta['version'];
 	} else {
-		$wp_rp_old_options = get_option('wp_rp', false);
-		if($wp_rp_old_options) {
-			$version = '1.4';
+		$wp_rp_meta = get_option('wp_rp_meta', false);
+		if($wp_rp_meta) {
+			$version = $wp_rp_meta['version'];
+		}
+		else {
+			$wp_rp_old_options = get_option('wp_rp', false);
+			if($wp_rp_old_options) {
+				$version = '1.4';
+			}
 		}
 	}
 
 	if($version) {
 		if(version_compare($version, WP_RP_VERSION, '<')) {
-			call_user_func('wp_rp_migrate_' . str_replace('.', '_', $version));
-			wp_rp_upgrade();
+			$upgrade_call = 'wp_rp_migrate_' . str_replace('.', '_', $version);
+			if (is_callable($upgrade_call)) {
+				call_user_func($upgrade_call);
+				wp_rp_upgrade();
+			}
+			else {
+				wp_rp_install();
+			}
 		}
 	} else {
 		wp_rp_install();
@@ -188,8 +201,7 @@ function wp_rp_install() {
 		'show_statistics' => false,
 		'show_traffic_exchange' => false,
 		'show_zemanta_linky_option' => true,
-		'classic_user' => strpos(get_bloginfo('language'), 'en') === 0, // Enable only if "any" english is the default language
-		'classic_user_old' => false // Deprecated!
+		'classic_user' => strpos(get_bloginfo('language'), 'en') === 0 // Enable only if "any" english is the default language
 	);
 
 	$wp_rp_options = array(
@@ -211,16 +223,6 @@ function wp_rp_install() {
 		'thumbnail_custom_field'		=> false,
 		'display_zemanta_linky'			=> false,
         'only_admins_can_edit_related_posts' => false,
-
-		'mobile' => array(
-			'display_comment_count'			=> false,
-			'display_publish_date'			=> false,
-			'display_excerpt'			=> false,
-			'display_thumbnail'			=> false,
-			'excerpt_max_length'			=> 200,
-			'theme_name' 				=> 'm-stream.css',
-			'theme_custom_css'			=> WP_RP_DEFAULT_CUSTOM_CSS,
-		),
 		'desktop' => array(
 			'display_comment_count'			=> false,
 			'display_publish_date'			=> false,
@@ -233,8 +235,8 @@ function wp_rp_install() {
 		)
 	);
 
-	update_option('wp_rp_meta', $wp_rp_meta);
-	update_option('wp_rp_options', $wp_rp_options);
+	update_option('gp_meta', $wp_rp_meta);
+	update_option('gp_options', $wp_rp_options);
 
 	wp_rp_related_posts_db_table_install();
 }
@@ -247,11 +249,71 @@ function wp_rp_is_classic() {
 	return false;
 }
 
+function wp_rp_migrate_3_4_4() {
+	$wp_rp_meta = get_option('gp_meta');
+
+	$wp_rp_meta['version'] = '3.4.5';
+	$wp_rp_meta['new_user'] = false;
+	update_option('gp_meta', $wp_rp_meta);
+}
+
+function wp_rp_migrate_3_4_3() {
+	$wp_rp_meta = get_option('gp_meta');
+
+	$wp_rp_meta['version'] = '3.4.4';
+	$wp_rp_meta['new_user'] = false;
+	update_option('gp_meta', $wp_rp_meta);
+}
+
+function wp_rp_migrate_3_4_2() {
+	$wp_rp_meta = get_option('gp_meta');
+
+	$wp_rp_meta['version'] = '3.4.3';
+	$wp_rp_meta['new_user'] = false;
+	unset($wp_rp_meta['classic_user_old']);
+	
+	update_option('gp_meta', $wp_rp_meta);
+
+	$wp_rp_options = get_option('gp_options');
+	$wp_rp_options['custom_theme_enabled'] = 0;
+
+	update_option('gp_options', $wp_rp_options);
+}
+
+function wp_rp_migrate_3_4_1() {
+	$wp_rp_meta = get_option('wp_rp_meta');
+
+	$wp_rp_meta['version'] = '3.4.2';
+	$wp_rp_meta['new_user'] = false;
+	
+	update_option('gp_meta', $wp_rp_meta);
+
+	
+	$wp_rp_options = get_option('wp_rp_options');
+	$wp_rp_options['custom_theme_enabled'] = false;
+	update_option('gp_options', $wp_rp_options);
+}
+
+function wp_rp_migrate_3_4() {
+    $wp_rp_meta = get_option('wp_rp_meta');
+	$wp_rp_meta['version'] = '3.4.1';
+	$wp_rp_meta['new_user'] = false;
+	update_option('wp_rp_meta', $wp_rp_meta);
+}
+
+function wp_rp_migrate_3_3_1() {
+	// this is a hotfix for correct plugin versioning
+	// introduced different versioning for readside plugins
+	
+	$wp_rp_meta = get_option('wp_rp_meta');
+	$wp_rp_meta['version'] = '3.4'; 
+	update_option('wp_rp_meta', $wp_rp_meta);
+}
+
 function wp_rp_migrate_3_3() {
     $wp_rp_meta = get_option('wp_rp_meta');
 	$wp_rp_meta['version'] = '3.4';
 	$wp_rp_meta['new_user'] = false;
-	$wp_rp_meta['classic_user'] = true;
 	update_option('wp_rp_meta', $wp_rp_meta);
     
     $wp_rp_options = get_option('wp_rp_options');
@@ -263,7 +325,6 @@ function wp_rp_migrate_3_2() {
 	$wp_rp_meta = get_option('wp_rp_meta');
 	$wp_rp_meta['version'] = '3.3';
 	$wp_rp_meta['new_user'] = false;
-	$wp_rp_meta['classic_user'] = true;
 	update_option('wp_rp_meta', $wp_rp_meta);
 
 }
@@ -274,7 +335,6 @@ function wp_rp_migrate_3_1() {
 	$wp_rp_meta = get_option('wp_rp_meta');
 	$wp_rp_meta['version'] = '3.2';
 	$wp_rp_meta['new_user'] = false;
-	$wp_rp_meta['classic_user'] = true;
 	$wp_rp_options = get_option('wp_rp_options');
 	$wp_rp_options['custom_size_thumbnail_enabled'] = false;
 	$wp_rp_options['custom_thumbnail_width'] = WP_RP_CUSTOM_THUMBNAILS_WIDTH;
@@ -291,7 +351,6 @@ function wp_rp_migrate_3_0() {
 	$wp_rp_meta = get_option('wp_rp_meta');
 	$wp_rp_meta['version'] = '3.1';
 	$wp_rp_meta['new_user'] = false;
-	$wp_rp_meta['classic_user'] = true;
 	$wp_rp_options = get_option('wp_rp_options');
 	$wp_rp_options['custom_size_thumbnail_enabled'] = false;
 	$wp_rp_options['custom_thumbnail_width'] = WP_RP_CUSTOM_THUMBNAILS_WIDTH;

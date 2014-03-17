@@ -13,9 +13,9 @@
 #wp_rp_wrap div#wp_rp_statistics_wrap {position: relative; overflow: hidden;}
 #wp_rp_wrap div#wp_rp_statistics_holder {overflow: hidden;}
 
-#wp_rp_wrap div#wp_rp_statistics_collapsible {float: left; min-width: 600px;}
-#wp_rp_wrap div#wp_rp_statistics_collapsible.collapsed {border-bottom: 1px solid #ddd;}
-#wp_rp_wrap div#wp_rp_statistics_collapsible.collapsed {border-bottom: 1px solid #ddd;}
+.settings_block {width: 700px; clear:both; }
+.settings_block.collapsed {border-bottom: 1px solid #ddd;}
+.settings_block.collapsed {border-bottom: 1px solid #ddd;}
 
 #wp_rp_wrap div#wp_rp_statistics_wrap ul.statistics {margin: 0; float: left; width: 600px;}
 #wp_rp_wrap.wp_rp_dashboard div#wp_rp_statistics_wrap ul.statistics {float: none; width: auto;}
@@ -102,7 +102,7 @@
 form.wp_rp_message_form { background: #f7f7f7; padding: 20px; margin: 30px 0px; border: 1px solid #e1e1e1; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 form.wp_rp_message_form p {font-size: 14px;}
 form.wp_rp_message_form h2 { font-size: 19px; line-height: 20px; padding-top: 0px; }
-form.wp_rp_message_form .submit {cursor: pointer; background: #8bc7d1; border: 1px solid #57aab8; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: white; padding: 6px 24px; text-shadow: 0px 1px 1px #888; font-weight: bold; font-size: 18px; line-height: 20px; text-decoration: none; text-transform: uppercase; box-shadow: 0px 1px 4px -2px black, 0px 1px 0px #a8d9e0 inset; }
+form.wp_rp_message_form .submit {cursor: pointer; background: #8bc7d1; border: 1px solid #57aab8; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; color: white; padding: 6px 24px; text-shadow: 0px 1px 1px #888; font-weight: bold; font-size: 18px; line-height: 20px; text-decoration: none; text-transform: uppercase; box-shadow: 0px 1px 4px -2px black, 0px 1px 0px #a8d9e0 inset;}
 form.wp_rp_message_form .submit.disabled { background-color: #ddd; border-color: #bababa; }
 form.wp_rp_message_form .thankyou { font-size: 14px; display: none; line-height: 42px;}
 form.wp_rp_message_form .thankyou img { float: left; margin: 10px; }
@@ -136,14 +136,11 @@ form.wp_rp_message_form a.dismiss {float: right;}
 #wp_rp_theme_options_wrap .theme-extra-options {clear: left;}
 #wp_rp_theme_options_wrap .custom-theme {clear: both;}
 
-#wp_rp_theme_options_wrap .wp_rp_settings_table {padding: 15px;border: 1px solid #CCC;width: 630px;margin-bottom: 30px;border-top: 5px solid #CCC;}
-#wp_rp_theme_options_wrap .wp_rp_settings_table tbody tr td {padding: 8px 10px;}
-#wp_rp_theme_options_wrap .wp_rp_settings_table tbody tr td h4 {font-size: 1.5em;font-weight: normal;}
-#wp_rp_theme_options_wrap .wp_rp_settings_table tbody tr td div .theme-extra-options label {}
-#wp_rp_theme_options_wrap .wp_rp_settings_table tbody tr td div .theme-extra-options label.selected {}
-#wp_rp_theme_options_wrap .wp_rp_settings_table tbody tr td div .theme-extra-options label input {display: none;}
-
 #wp_rp_theme_custom_css_wrap td {margin: 0; padding-top: 0;}
 #wp_rp_theme_custom_css_wrap .notice {margin: 0; padding: 0 0 3px 0; color: #666;}
 
 #wp_rp_tos {margin-top: 30px;}
+
+.custom-css-container {margin-top: 5px;}
+
+#wp_rp_wrap form p.end-block { clear: both;	margin: 30px 0 0 0; }
