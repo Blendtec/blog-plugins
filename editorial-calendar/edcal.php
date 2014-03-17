@@ -18,7 +18,7 @@
 /*
 Plugin Name: WordPress Editorial Calendar
 Description: The Editorial Calendar makes it possible to see all your posts and drag and drop them to manage your blog.
-Version: 3.0
+Version: 3.1
 Author: Colin Vernon, Justin Evans, Joachim Kudish, Mary Vogt, and Zack Grossbart
 Author URI: http://www.zackgrossbart.com
 Plugin URI: http://stresslimitdesign.com/editorial-calendar-plugin
@@ -73,7 +73,7 @@ class EdCal {
          * This is the default time that posts get created at, for now 
          * we are using 10am, but this could become an option later.
          */
-        $this->default_time = get_option("edcal_default_time") != "" ? get_option("edcal_default_time") : '10:00';        
+        $this->default_time = get_option("edcal_default_time") != "" ? get_option("edcal_default_time") : '10:00';
         
         /*
          * We use these variables to hold the post dates for the filter when 
@@ -96,7 +96,8 @@ class EdCal {
             $page = add_posts_page( __('Calendar', 'editorial-calendar'), __('Calendar', 'editorial-calendar'), 'edit_posts', 'cal', array(&$this, 'edcal_list_admin'));
             add_action( "admin_print_scripts-$page", array(&$this, 'edcal_scripts'));
 
-            if( $this->supports_custom_types ) {
+            if ($this->supports_custom_types) {
+
 
                 /* 
                  * We add one calendar for Posts and then we add a separate calendar for each
@@ -107,7 +108,7 @@ class EdCal {
                  * type and update the labels for each post type.
                  */
                 $args = array(
-                    'public'   => true,
+                    'public'   => get_option("edcal_custom_posts_public") != "" ? get_option("edcal_custom_posts_public") : true,
                     '_builtin' => false
                 ); 
                 $output = 'names'; // names or objects
@@ -200,7 +201,7 @@ class EdCal {
         <!-- This is just a little script so we can pass the AJAX URL and some localized strings -->
         <script type="text/javascript">
             jQuery(document).ready(function(){
-                edcal.plugin_url = '<?php echo(plugins_url("/editorial-calendar/")); ?>';
+                edcal.plugin_url = '<?php echo(plugins_url("/", __FILE__ )); ?>';
                 edcal.wp_nonce = '<?php echo wp_create_nonce("edit-calendar"); ?>';
                 <?php 
                     if (get_option("edcal_weeks_pref") != "") {
@@ -352,7 +353,7 @@ class EdCal {
             }
     
             #tipclose {
-                background-image: url('<?php echo(plugins_url("editorial-calendar/images/tip_close.png")); ?>');
+                background-image: url('<?php echo(plugins_url("images/tip_close.png", __FILE__ )); ?>');
             }
     
         </style>
@@ -526,14 +527,14 @@ class EdCal {
         wp_enqueue_script('jquery-ui-draggable');
         wp_enqueue_script('jquery-ui-droppable');
     
-        //wp_enqueue_script("date-extras", plugins_url("/editorial-calendar/lib/date.extras.js"), array( 'jquery' ));
+        //wp_enqueue_script("date-extras", plugins_url("lib/date.extras.js", __FILE__ ), array( 'jquery' ));
     
-        wp_enqueue_script("edcal-date", plugins_url("/editorial-calendar/lib/languages/date-".__('en-US', 'editorial-calendar').".js"));
-        wp_enqueue_script("edcal-lib", plugins_url("/editorial-calendar/lib/edcallib.min.js"), array( 'jquery' ));
+        wp_enqueue_script("edcal-date", plugins_url("lib/languages/date-".__('en-US', 'editorial-calendar').".js", __FILE__ ));
+        wp_enqueue_script("edcal-lib", plugins_url("lib/edcallib.min.js", __FILE__ ), array( 'jquery' ));
     
         if (isset($_GET['qunit'])) {
-            wp_enqueue_script("qunit", plugins_url("/editorial-calendar/lib/qunit.js"), array( 'jquery' ));
-            wp_enqueue_script("edcal-test", plugins_url("/editorial-calendar/edcal_test.js"), array( 'jquery' ));
+            wp_enqueue_script("qunit", plugins_url("lib/qunit.js", __FILE__ ), array( 'jquery' ));
+            wp_enqueue_script("edcal-test", plugins_url("edcal_test.js", __FILE__ ), array( 'jquery' ));
         }
         
         return;
@@ -542,14 +543,14 @@ class EdCal {
          * If you're using one of the specific libraries you should comment out the two lines
          * above this comment.
          */
-        wp_enqueue_script("bgiframe", plugins_url("/editorial-calendar/lib/jquery.bgiframe.js"), array( 'jquery' ));
-        wp_enqueue_script("humanMsg", plugins_url("/editorial-calendar/lib/humanmsg.js"), array( 'jquery' ));
-        wp_enqueue_script("jquery-timepicker", plugins_url("/editorial-calendar/lib/jquery.timepicker.js"), array( 'jquery' ));
+        wp_enqueue_script("bgiframe", plugins_url("lib/jquery.bgiframe.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("humanMsg", plugins_url("lib/humanmsg.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("jquery-timepicker", plugins_url("lib/jquery.timepicker.js", __FILE__ ), array( 'jquery' ));
         
-        wp_enqueue_script("scrollable", plugins_url("/editorial-calendar/lib/tools.scrollable-1.1.2.js"), array( 'jquery' ));
-        wp_enqueue_script("mouse-wheel", plugins_url("/editorial-calendar/lib/tools.scrollable.mousewheel-1.0.1.js"), array( 'jquery' ));
+        wp_enqueue_script("scrollable", plugins_url("lib/tools.scrollable-1.1.2.js", __FILE__ ), array( 'jquery' ));
+        wp_enqueue_script("mouse-wheel", plugins_url("lib/lib/tools.scrollable.mousewheel-1.0.1.js", __FILE__ ), array( 'jquery' ));
     
-        wp_enqueue_script("json-parse2", plugins_url("/editorial-calendar/lib/json2.js"), array( 'jquery' ));
+        wp_enqueue_script("json-parse2", plugins_url("lib/json2.js", __FILE__ ), array( 'jquery' ));
     }
     
     /*
@@ -804,6 +805,10 @@ class EdCal {
             $post_date_gmt = '00000000';
         }
         
+        $slugs = '';
+        foreach(get_the_category() as $category) {
+            $slugs .= $category->slug . ' ';
+        }
         
         ?>
             {
@@ -819,6 +824,7 @@ class EdCal {
                 "author" : <?php echo $this->edcal_json_encode(get_the_author()) ?>,
                 "type" : "<?php echo get_post_type( $post ) ?>",
                 "typeTitle" : "<?php echo $postTypeTitle ?>",
+                "slugs" : <?php echo $this->edcal_json_encode($slugs) ?>,
     
                 <?php if ( current_user_can('edit_post', $post->ID) ) {?>
                 "editlink" : "<?php echo get_edit_post_link($post->ID) ?>",
