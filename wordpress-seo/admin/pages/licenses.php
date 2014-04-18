@@ -73,10 +73,15 @@ global $wpseo_admin_pages;
 			?>
 		</div>
 		<div id="licenses" class="wpseotab">
+			<?php
 
-			<?php settings_errors(); ?>
+				/**
+				 * Display license page
+				 */
+				settings_errors();
+                do_action('wpseo_licenses_forms');
 
-			<?php do_action('wpseo_licenses_forms'); ?>
+			?>
 		</div>
 	</div>
 
